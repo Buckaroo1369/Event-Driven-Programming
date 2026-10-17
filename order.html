@@ -6,17 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Menu | Rene's OnlyPans</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="surprise.css">
 </head>
 <body>
 
     <header>
         <nav class="navbar">
             <a href="index.html" class="logo">Rene's OnlyPans</a>
-
+            <button class="surprise-trigger"
+                id="openSurprise"
+                type="button"
+                aria-label="Open a surprise">
+                &lt;&gt;
+            </button>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="products.html">Products</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="about.html">About Us</a></li>
             </ul>
         </nav>
     </header>
@@ -223,8 +229,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const nameInput = getElement("customer-name");
     const phoneInput = getElement("customer-phone");
     const notesInput = getElement("customer-notes");
-
-    // Stop setup if required HTML elements are missing.
     const requiredElements = [
         subtotalDisplay, customerForm, addressGroup, customerAddress,
         reviewButton, reviewActions, editButton, confirmButton,
@@ -462,16 +466,15 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!currentOrder) return;
 
         finishOrder(
-            "Demo payment marked successful using " +
-            paymentMethod.value +
-            ". No real payment was processed."
+            "TRANSACTION COMPLETE: " +
+            paymentMethod.value
         );
     });
 
     function finishOrder(message) {
         successMessage.textContent =
             message + " Total: " + money(currentOrder.total) +
-            ". This is a demo; no real order was submitted.";
+            ". Your order has been placed, we will deliver it to you shortly. Thank you for choosing Rene's OnlyPans!";
 
         paymentSection.hidden = true;
         reviewActions.hidden = true;
@@ -530,7 +533,7 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("scroll", updateNavbar);
     updateNavbar();
 </script>
-
+<script src="surprise.js"></script>
 </body>
 </html>
 
@@ -634,18 +637,17 @@ document.addEventListener("DOMContentLoaded", function () {
 </section>
 
 <section id="payment-section" class="payment-section" hidden>
-    <h2>Demo Online Payment</h2>
-    <p>This is a simulated payment screen. No real payment will be processed.</p>
+    <h2>Online Payment</h2>
 
     <label for="payment-method">Choose a payment method</label>
     <select id="payment-method">
-        <option value="GCash">GCash (Demo)</option>
-        <option value="Maya">Maya (Demo)</option>
-        <option value="Card">Debit/Credit Card (Demo)</option>
+        <option value="GCash">GCash</option>
+        <option value="Maya">Maya</option>
+        <option value="Card">Debit/Credit Card</option>
     </select>
 
     <button type="button" id="pay-demo-btn" class="hero-button">
-        Simulate Payment
+        PAY
     </button>
 </section>
 
@@ -687,6 +689,40 @@ document.addEventListener("DOMContentLoaded", function () {
         <p>&copy; 2026 Rene's OnlyPans. All rights reserved.</p>
     </div>
 </footer>
+<dialog id="surprisePopup" class="surprise-popup">
+    <div class="surprise-overlay-content">
+
+        <img src="resources/images_PhotoGrid.png"
+            alt=""
+            class="surprise-image">
+
+        <div class="surprise-card">
+            <p class="surprise-label">SPECIAL MESSAGE</p>
+
+            <h2>Hey, you!</h2>
+
+            <p class="surprise-message">
+                Will you be my dance on Solidarity Night? Just the two of us slow dancing under the stars....
+            </p>
+
+            <button id="yesSurprise" class="surprise-yes" type="button">
+                Yes ❤️
+            </button>
+
+            <button id="noSurprise" class="surprise-no" type="button">
+                No
+            </button>
+
+            <audio id="surpriseAudio" preload="auto">
+                <source src="resources/Lord Huron - The Night We Met (Official Audio) - Lord Huron.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+    </div>
+</dialog>
+<script src="surprise.js"></script>
+</body>
+</html>
+
 
 </body>
 </html>

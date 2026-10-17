@@ -5,25 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rene's OnlyPans | Online Pastry Shop</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="surprise.css">
 </head>
 <body>
     <header>
         <nav class="navbar">
-        <a href="index.html" class="logo">Rene's OnlyPans</a>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="about.html">About Us</a></li>
-        </ul>
-    </nav>
+            <a href="index.html" class="logo">Rene's OnlyPans</a>
+            <button class="surprise-trigger"
+                id="openSurprise"
+                type="button"
+                aria-label="Open a surprise">
+                &lt;&gt;
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </nav>
     </header>
     
 <main>
 <section class="hero">
     <div class="hero-content">
-        <p class="hero-tagline">✦ FRESH FROM OUR OVEN ✦</p>
+        <p class="hero-tagline">✦ MALULUNOD KA SA SARAP ✦</p>
 
-        <h1>Malulunod ka sa sarap.</h1>
+        <h1>Rene's OnlyPans</h1>
 
         <p class="hero-description">
             Discover warm, delicious bread and pastries
@@ -39,7 +46,7 @@
     <div class="section-heading">
         <p class="tagline">MADE FRESH FOR YOU</p>
         <h2>✦ Our Customer Favorites ✦</h2>
-        <p>Simple treats, freshly baked with care.</p>
+        <p>Simple treats, baked with love.</p>
     </div>
 
     <div class="featured-grid">
@@ -108,5 +115,40 @@ const header = document.querySelector("header");
     window.addEventListener("scroll", updateNavbar);
     updateNavbar();
 </script>
+<script src="surprise.js"></script>
+<dialog id="surprisePopup" class="surprise-popup">
+    <div class="surprise-overlay-content">
+
+        <img src="resources/images_PhotoGrid.png"
+            alt=""
+            class="surprise-image">
+
+        <div class="surprise-card">
+            <p class="surprise-label">SPECIAL MESSAGE</p>
+
+            <h2>Hey, you!</h2>
+
+            <p class="surprise-message">
+                Will you be my dance on Solidarity Night? Just the two of us slow dancing under the stars....
+            </p>
+
+            <button id="yesSurprise" class="surprise-yes" type="button">
+                Yes ❤️
+            </button>
+
+            <button id="noSurprise" class="surprise-no" type="button">
+                No
+            </button>
+
+            <audio id="surpriseAudio" preload="auto">
+                <source src="resources/Lord Huron - The Night We Met (Official Audio) - Lord Huron.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+    </div>
+</dialog>
+<script src="surprise.js"></script>
+</body>
+</html>
+
 </body>
 </html>

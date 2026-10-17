@@ -6,13 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Products | Rene's OnlyPans</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="surprise.css">
 </head>
 <body>
 
     <header>
         <nav class="navbar">
             <a href="index.html" class="logo">Rene's OnlyPans</a>
-
+            <button class="surprise-trigger"
+                id="openSurprise"
+                type="button"
+                aria-label="Open a surprise">
+                &lt;&gt;
+            </button>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="products.html">Products</a></li>
@@ -23,7 +29,7 @@
 
     <main>
         <section class="products-intro">
-            <p class="tagline">FRESH FROM OUR OVEN</p>
+            <p class="tagline">BAKED WITH CARE • MADE WITH LOVE</p>
             <h1>✦ Menu Selection ✦</h1>
             <p>Mapapa brazilian dance ka sa bawat kagat.</p>
         </section>
@@ -128,5 +134,40 @@
     window.addEventListener("scroll", updateNavbar);
     updateNavbar();
 </script>
+<script src="surprise.js"></script>
+<dialog id="surprisePopup" class="surprise-popup">
+    <div class="surprise-overlay-content">
+
+        <img src="resources/images_PhotoGrid.png"
+            alt=""
+            class="surprise-image">
+
+        <div class="surprise-card">
+            <p class="surprise-label">SPECIAL MESSAGE</p>
+
+            <h2>Hey, you!</h2>
+
+            <p class="surprise-message">
+                Will you be my dance on Solidarity Night? Just the two of us slow dancing under the stars....
+            </p>
+
+            <button id="yesSurprise" class="surprise-yes" type="button">
+                Yes ❤️
+            </button>
+
+            <button id="noSurprise" class="surprise-no" type="button">
+                No
+            </button>
+
+            <audio id="surpriseAudio" preload="auto">
+                <source src="resources/Lord Huron - The Night We Met (Official Audio) - Lord Huron.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+    </div>
+</dialog>
+<script src="surprise.js"></script>
+</body>
+</html>
+
 </body>
 </html>
