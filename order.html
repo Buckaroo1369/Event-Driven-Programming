@@ -1,0 +1,692 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Menu | Rene's OnlyPans</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">Rene's OnlyPans</a>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="order-intro">
+    <p class="tagline">✦ FRESH FROM OUR OVEN ✦</p>
+
+    <h1>A Little Something<br>Freshly Baked</h1>
+
+    <p class="order-description">
+        Choose your favorites, place your order, and let us
+        bring a little warmth to your day.
+    </p>
+
+    <div class="order-intro-divider">
+        <span>✦</span>
+        <span>Baked with care · Made with love</span>
+        <span>✦</span>
+    </div>
+</section>
+
+        
+<section class="order-section">
+    <h2>Like Our Products?</h2>
+    <p>Select your treats.</p>
+
+    <div class="order-products">
+
+        <div class="order-product">
+            <img src="resources/classicpandesal.png" alt="Classic Pandesal">
+
+            <div class="order-product-info">
+                <h3>Classic Pandesal</h3>
+                <p>₱5.00 per piece</p>
+
+                <label for="classicpandesal-qty">Quantity</label>
+                <input
+                    type="number"
+                    id="classicpandesal-qty"
+                    min="0"
+                    max="100"
+                    value="0">
+            </div>
+        </div>
+
+        <div class="order-product">
+            <img src="resources/RusticBasketofButteredRolls.png" alt="Buttered Bread">
+
+            <div class="order-product-info">
+                <h3>Pan de Sal con BUTTERbonia</h3>
+                <p>₱5.00 per piece</p>
+
+                <label for="pandesalconbutterbonia-qty">Quantity</label>
+                <input
+                    type="number"
+                    id="pandesalconbutterbonia-qty"
+                    min="0"
+                    max="100"
+                    value="0">
+            </div>
+        </div>
+
+        <div class="order-product">
+            <img src="resources/cheesepandesal.png" alt="Sweet Pastry">
+
+            <div class="order-product-info">
+                <h3>Pan de Sal con Keso</h3>
+                <p>₱5.00 per piece</p>
+
+                <label for="pandesalconkeso-qty">Quantity</label>
+                <input
+                    type="number"
+                    id="pandesalconkeso-qty"
+                    min="0"
+                    max="100"
+                    value="0">
+            </div>
+        </div>
+
+        <div class="order-product">
+            <img src="resources/croissant.png" alt="Sweet Pastry">
+
+            <div class="order-product-info">
+                <h3>Croissant</h3>
+                <p>₱10.00 per piece</p>
+
+                <label for="croissant-qty">Quantity</label>
+                <input
+                    type="number"
+                    id="croissant-qty"
+                    min="0"
+                    max="100"
+                    value="0">
+            </div>
+        </div>
+
+        <div class="order-product">
+            <img src="resources/malunggaypandesal.png" alt="Sweet Pastry">
+
+            <div class="order-product-info">
+                <h3>Malunggay Pandesal</h3>
+                <p>₱5.00 per piece</p>
+
+                <label for="malunggaypandesal-qty">Quantity</label>
+                <input
+                    type="number"
+                    id="malunggaypandesal-qty"
+                    min="0"
+                    max="100"
+                    value="0">
+            </div>
+        </div>
+
+        <div class="order-product">
+            <img src="resources/panzaria.png" alt="Sweet Pastry">
+
+            <div class="order-product-info">
+                <h3>Panzaria</h3>
+                <p>₱50.00 per piece</p>
+
+                <label for="panzaria-qty">Quantity</label>
+                <input
+                    type="number"
+                    id="panzaria-qty"
+                    min="0"
+                    max="100"
+                    value="0">
+            </div>
+        </div>
+
+        <div class="order-product">
+            <img src="resources/monay.png" alt="Sweet Pastry">
+
+            <div class="order-product-info">
+                <h3>Monay</h3>
+                <p>₱5.00 per piece</p>
+
+                <label for="monay-qty">Quantity</label>
+                <input
+                    type="number"
+                    id="monay-qty"
+                    min="0"
+                    max="100"
+                    value="0">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="cart-total">
+        <h3>Subtotal: <span id="cart-subtotal">₱0.00</span></h3>
+    </div>
+    
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    
+    const products = [
+        { id: "classicpandesal-qty", name: "Classic Pandesal", price: 5 },
+        { id: "pandesalconbutterbonia-qty", name: "Pandesal con Butter Bonia", price: 15 },
+        { id: "pandesalconkeso-qty", name: "Pandesal con Keso", price: 5 },
+        { id: "croissant-qty", name: "Croissant", price: 10 },
+        { id: "panzaria-qty", name: "Panzaria", price: 50 },
+        { id: "monay-qty", name: "Monay", price: 5 },
+        { id: "malunggaypandesal-qty", name: "Malunggay Pandesal", price: 5}
+    ];
+
+    const DELIVERY_FEE = 10;
+
+    function getElement(id) {
+        const element = document.getElementById(id);
+
+        if (!element) {
+            console.error("Missing HTML element with ID:", id);
+        }
+
+        return element;
+    }
+
+    const subtotalDisplay = getElement("cart-subtotal");
+    const customerForm = getElement("customer-form");
+    const addressGroup = getElement("address-group");
+    const customerAddress = getElement("customer-address");
+
+    const reviewButton = getElement("review-order-btn");
+    const reviewActions = getElement("review-actions");
+    const editButton = getElement("back-to-edit-btn");
+    const confirmButton = getElement("confirm-order-btn");
+
+    const summaryContent = getElement("summary-content");
+    const summarySubtotal = getElement("summary-subtotal");
+    const deliveryFeeDisplay = getElement("delivery-fee");
+    const summaryTotal = getElement("summary-total");
+
+    const paymentSection = getElement("payment-section");
+    const paymentMethod = getElement("payment-method");
+    const payButton = getElement("pay-demo-btn");
+
+    const successSection = getElement("success-section");
+    const successMessage = getElement("success-message");
+    const newOrderButton = getElement("new-order-btn");
+
+    const nameInput = getElement("customer-name");
+    const phoneInput = getElement("customer-phone");
+    const notesInput = getElement("customer-notes");
+
+    // Stop setup if required HTML elements are missing.
+    const requiredElements = [
+        subtotalDisplay, customerForm, addressGroup, customerAddress,
+        reviewButton, reviewActions, editButton, confirmButton,
+        summaryContent, summarySubtotal, deliveryFeeDisplay, summaryTotal,
+        paymentSection, paymentMethod, payButton,
+        successSection, successMessage, newOrderButton,
+        nameInput, phoneInput, notesInput
+    ];
+
+    if (requiredElements.some(element => !element)) {
+        console.error(
+            "Checkout setup stopped. Fix the missing HTML IDs listed above."
+        );
+        return;
+    }
+
+    let currentOrder = null;
+
+    function money(amount) {
+        return "₱" + amount.toFixed(2);
+    }
+
+    function updateSubtotal() {
+        let subtotal = 0;
+
+        products.forEach(product => {
+            const input = getElement(product.id);
+            if (!input) return;
+
+            let quantity = Number(input.value);
+
+            if (!Number.isFinite(quantity)) quantity = 0;
+
+            quantity = Math.max(0, Math.min(100, Math.floor(quantity)));
+            input.value = quantity;
+
+            subtotal += quantity * product.price;
+        });
+
+        subtotalDisplay.textContent = money(subtotal);
+    }
+
+    products.forEach(product => {
+        const input = getElement(product.id);
+        if (input) {
+            input.addEventListener("input", updateSubtotal);
+            input.addEventListener("change", updateSubtotal);
+        }
+    });
+
+
+    function updateOrderType() {
+        const selected = document.querySelector(
+            'input[name="orderType"]:checked'
+        );
+
+        if (!selected) {
+            console.error(
+                'Add a checked radio input named "orderType" to the HTML.'
+            );
+            return;
+        }
+
+        const delivery = selected.value === "delivery";
+
+        addressGroup.hidden = !delivery;
+        customerAddress.required = delivery;
+
+        if (!delivery) {
+            customerAddress.value = "";
+        }
+    }
+
+    document.querySelectorAll('input[name="orderType"]').forEach(input => {
+        input.addEventListener("change", updateOrderType);
+    });
+
+
+    function collectOrder() {
+        const items = [];
+
+        products.forEach(product => {
+            const quantity = Number(
+                getElement(product.id).value
+            ) || 0;
+
+            if (quantity > 0) {
+                items.push({
+                    name: product.name,
+                    quantity: quantity,
+                    price: product.price,
+                    total: quantity * product.price
+                });
+            }
+        });
+
+        const subtotal = items.reduce(
+            (sum, item) => sum + item.total, 0
+        );
+
+        const selected = document.querySelector(
+            'input[name="orderType"]:checked'
+        );
+
+        if (!selected) {
+            alert("Please select Walk-in / Pickup or Delivery.");
+            return null;
+        }
+
+        const orderType = selected.value;
+        const deliveryFee = orderType === "delivery" ? DELIVERY_FEE : 0;
+
+        return {
+            items: items,
+            subtotal: subtotal,
+            deliveryFee: deliveryFee,
+            total: subtotal + deliveryFee,
+            orderType: orderType,
+            name: nameInput.value.trim(),
+            phone: phoneInput.value.trim(),
+            address: customerAddress.value.trim(),
+            notes: notesInput.value.trim()
+        };
+    }
+
+
+    function renderSummary(order) {
+        summaryContent.replaceChildren();
+
+        if (order.items.length === 0) {
+            const empty = document.createElement("p");
+            empty.textContent = "Your cart is currently empty.";
+            summaryContent.appendChild(empty);
+        }
+
+        order.items.forEach(item => {
+            const row = document.createElement("div");
+            row.className = "summary-item";
+
+            const description = document.createElement("span");
+            description.textContent =
+                `${item.name} × ${item.quantity}`;
+
+            const amount = document.createElement("strong");
+            amount.textContent = money(item.total);
+
+            row.append(description, amount);
+            summaryContent.appendChild(row);
+        });
+
+        const customerDetails = document.createElement("div");
+        customerDetails.className = "order-customer-summary";
+
+        const details = [
+            "Customer: " + order.name,
+            "Contact: " + order.phone,
+            "Order type: " +
+                (order.orderType === "delivery"
+                    ? "Delivery"
+                    : "Walk-in / Pickup")
+        ];
+
+        if (order.orderType === "delivery") {
+            details.push("Address: " + order.address);
+        }
+
+        if (order.notes) {
+            details.push("Notes: " + order.notes);
+        }
+
+        details.forEach(text => {
+            const paragraph = document.createElement("p");
+            paragraph.textContent = text;
+            customerDetails.appendChild(paragraph);
+        });
+
+        summaryContent.appendChild(customerDetails);
+
+        summarySubtotal.textContent = money(order.subtotal);
+        deliveryFeeDisplay.textContent = money(order.deliveryFee);
+        summaryTotal.textContent = money(order.total);
+    }
+
+
+    reviewButton.addEventListener("click", function () {
+        updateOrderType();
+
+        if (!customerForm.reportValidity()) {
+            return;
+        }
+
+        const order = collectOrder();
+
+        if (!order) return;
+
+        if (order.items.length === 0) {
+            alert("Please select at least one product.");
+            return;
+        }
+
+        currentOrder = order;
+        renderSummary(currentOrder);
+
+        reviewButton.hidden = true;
+        reviewActions.hidden = false;
+        paymentSection.hidden = true;
+        successSection.hidden = true;
+
+        summaryContent.scrollIntoView({ behavior: "smooth" });
+    });
+
+
+    editButton.addEventListener("click", function () {
+        reviewActions.hidden = true;
+        reviewButton.hidden = false;
+        paymentSection.hidden = true;
+
+        getElement("customer-details").scrollIntoView({
+            behavior: "smooth"
+        });
+    });
+
+    confirmButton.addEventListener("click", function () {
+        if (!currentOrder) return;
+
+        if (currentOrder.orderType === "delivery") {
+            paymentSection.hidden = false;
+            paymentSection.scrollIntoView({ behavior: "smooth" });
+        } else {
+            finishOrder("Walk-in / Pickup order confirmed.");
+        }
+    });
+
+    payButton.addEventListener("click", function () {
+        if (!currentOrder) return;
+
+        finishOrder(
+            "Demo payment marked successful using " +
+            paymentMethod.value +
+            ". No real payment was processed."
+        );
+    });
+
+    function finishOrder(message) {
+        successMessage.textContent =
+            message + " Total: " + money(currentOrder.total) +
+            ". This is a demo; no real order was submitted.";
+
+        paymentSection.hidden = true;
+        reviewActions.hidden = true;
+        reviewButton.hidden = true;
+        successSection.hidden = false;
+
+        successSection.scrollIntoView({ behavior: "smooth" });
+    }
+
+    newOrderButton.addEventListener("click", function () {
+        customerForm.reset();
+
+        products.forEach(product => {
+            getElement(product.id).value = 0;
+        });
+
+        currentOrder = null;
+
+        updateSubtotal();
+        updateOrderType();
+
+        summaryContent.replaceChildren();
+
+        const empty = document.createElement("p");
+        empty.className = "empty-cart";
+        empty.textContent = "Your cart is currently empty.";
+        summaryContent.appendChild(empty);
+
+        summarySubtotal.textContent = money(0);
+        deliveryFeeDisplay.textContent = money(0);
+        summaryTotal.textContent = money(0);
+
+        reviewButton.hidden = false;
+        reviewActions.hidden = true;
+        paymentSection.hidden = true;
+        successSection.hidden = true;
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    updateSubtotal();
+    updateOrderType();
+
+    console.log("Order script initialized successfully.");
+});
+    const header = document.querySelector("header");
+
+    function updateNavbar() {
+        if (window.scrollY > 50) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+    }
+
+    window.addEventListener("scroll", updateNavbar);
+    updateNavbar();
+</script>
+
+</body>
+</html>
+
+</section>
+
+<section class="customer-section" id="customer-details">
+    <h2>Customer Details</h2>
+    <p>Please provide your information to continue.</p>
+
+    <form id="customer-form">
+
+        <div class="form-group">
+            <label for="customer-name">Full Name</label>
+            <input
+                type="text"
+                id="customer-name"
+                name="customerName"
+                placeholder="Enter your full name"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="customer-phone">Contact Number</label>
+            <input
+                type="tel"
+                id="customer-phone"
+                name="customerPhone"
+                placeholder="e.g. 09XXXXXXXXX"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label>Order Type</label>
+
+            <div class="order-type-options">
+                <label>
+                    <input
+                        type="radio"
+                        name="orderType"
+                        value="walk-in"
+                        checked>
+                    Walk-in / Pickup
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="orderType"
+                        value="delivery">
+                    Delivery
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group" id="address-group" hidden>
+            <label for="customer-address">Delivery Address</label>
+            <textarea
+                id="customer-address"
+                name="customerAddress"
+                placeholder="House number, street, barangay, city"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="customer-notes">Additional Notes (Optional)</label>
+            <textarea
+                id="customer-notes"
+                name="customerNotes"
+                placeholder="Special requests or instructions"></textarea>
+        </div>
+
+    </form>
+</section>
+
+<section class="checkout-section">
+    <h2>Order Summary</h2>
+    <p>Review your order before proceeding.</p>
+
+    <div id="summary-content">
+        <p class="empty-cart">Your cart is currently empty.</p>
+    </div>
+
+    <div class="checkout-total">
+        <p>Subtotal: <span id="summary-subtotal">₱0.00</span></p>
+        <p>Delivery Fee: <span id="delivery-fee">₱0.00</span></p>
+        <h3>Total: <span id="summary-total">₱0.00</span></h3>
+    </div>
+
+    <button type="button" id="review-order-btn" class="hero-button">
+        Review My Order
+    </button>
+
+    <div id="review-actions" hidden>
+        <button type="button" id="back-to-edit-btn" class="secondary-button">
+            Edit Order
+        </button>
+
+        <button type="button" id="confirm-order-btn" class="hero-button">
+            Confirm Order
+        </button>
+    </div>
+</section>
+
+<section id="payment-section" class="payment-section" hidden>
+    <h2>Demo Online Payment</h2>
+    <p>This is a simulated payment screen. No real payment will be processed.</p>
+
+    <label for="payment-method">Choose a payment method</label>
+    <select id="payment-method">
+        <option value="GCash">GCash (Demo)</option>
+        <option value="Maya">Maya (Demo)</option>
+        <option value="Card">Debit/Credit Card (Demo)</option>
+    </select>
+
+    <button type="button" id="pay-demo-btn" class="hero-button">
+        Simulate Payment
+    </button>
+</section>
+
+<section id="success-section" class="success-section" hidden>
+    <h2>Order Confirmed!</h2>
+    <p id="success-message"></p>
+    <button type="button" id="new-order-btn" class="hero-button">
+        Place Another Order
+    </button>
+</section>
+
+
+    </main>
+    <footer class="site-footer">
+    <div class="footer-content">
+
+        <div class="footer-brand">
+            <a href="index.html" class="footer-logo">Rene's OnlyPans</a>
+            <p>Malulunod ka sa sarap.</p>
+        </div>
+
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="about.html">About Us</a>
+        </div>
+
+        <div class="footer-contact">
+            <h3>Contact Us</h3>
+            <p>Pol-oton, Tankulan (pob), Manolo Fortich, Bukidnon</p>
+            <p>0967 609 6967 </p>
+            <p>renesonlypans@gmail.com</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 Rene's OnlyPans. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

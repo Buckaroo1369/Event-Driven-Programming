@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rene's OnlyPans | Online Pastry Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+        <a href="index.html" class="logo">Rene's OnlyPans</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About Us</a></li>
+        </ul>
+    </nav>
+    </header>
+    
+<main>
+<section class="hero">
+    <div class="hero-content">
+        <p class="hero-tagline">✦ FRESH FROM OUR OVEN ✦</p>
+
+        <h1>Malulunod ka sa sarap.</h1>
+
+        <p class="hero-description">
+            Discover warm, delicious bread and pastries
+            made to bring comfort to every bite.
+        </p>
+        <a href="products.html" class="hero-button">
+            Explore Our Menu
+        </a>
+    </div>
+</section>
+    
+<section class="featured">
+    <div class="section-heading">
+        <p class="tagline">MADE FRESH FOR YOU</p>
+        <h2>✦ Our Customer Favorites ✦</h2>
+        <p>Simple treats, freshly baked with care.</p>
+    </div>
+
+    <div class="featured-grid">
+        <div class="product-card">
+            <img src="resources/malunggaypandesal.png" alt="Freshly baked pandesal">
+            <h3>Malunggay Pandesal</h3>
+            <p>Healthy, toasty, fluffy, and nutritious.</p>
+        </div>
+
+        <div class="product-card">
+            <img src="resources/RusticBasketofButteredRolls.png" alt="Fresh bakery bread">
+            <h3>Pan de sal con Butterbonia</h3>
+            <p>Drown in rich buttery flavor with every bite.</p>
+        </div>
+
+        <div class="product-card">
+            <img src="resources/panzaria.png" alt="Freshly baked pastry">
+            <h3>Panzaria</h3>
+            <p>Your favorite pizza combine with one of our sweat pastry.</p>
+        </div>
+    </div>
+
+    <a href="products.html" class="hero-button">View All Products</a>
+</section>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-content">
+
+        <div class="footer-brand">
+            <a href="index.html" class="footer-logo">Rene's OnlyPans</a>
+            <p>✦ Malulunod ka sa sarap. ✦</p>
+        </div>
+
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="about.html">About Us</a>
+        </div>
+
+        <div class="footer-contact">
+            <h3>Contact Us</h3>
+            <p>Pol-oton, Tankulan (pob), Manolo Fortich, Bukidnon</p>
+            <p>0967 609 6967 </p>
+            <p>renesonlypans@gmail.com</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 Rene's OnlyPans. All rights reserved.</p>
+    </div>
+</footer>
+<script>
+const header = document.querySelector("header");
+
+    function updateNavbar() {
+        if (window.scrollY > 50) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+    }
+
+    window.addEventListener("scroll", updateNavbar);
+    updateNavbar();
+</script>
+</body>
+</html>
