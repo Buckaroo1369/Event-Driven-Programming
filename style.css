@@ -381,6 +381,18 @@ header.scrolled {
     margin-top: 12px;
 }
 
+.owner-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.owner-card {
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
+}
+
 .team-section {
     background-color: #FBE7B2;
     padding: 70px 8%;
@@ -391,7 +403,7 @@ header.scrolled {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 300px));
     justify-content: center;
-    gap: 30px;
+    gap:50px;
 }
 
 .team-card {

@@ -2,7 +2,7 @@
 .surprise-trigger {
     background: none;
     border: none;
-    color: #593D2B;
+    color: #f8dece;
     font-size: 23px;
     font-weight: bold;
     cursor: pointer;
@@ -13,7 +13,6 @@
     color: #A66A3F;
 }
 
-/* Native dialog */
 .surprise-popup {
     position: fixed;
     inset: 0;
