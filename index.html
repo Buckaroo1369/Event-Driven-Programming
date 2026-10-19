@@ -115,7 +115,7 @@ const header = document.querySelector("header");
     window.addEventListener("scroll", updateNavbar);
     updateNavbar();
 </script>
-/* <============== DON'T MIND THIS PART ===============> */
+/* ============== DON'T MIND THIS PART =============== */
 <script src="surprise.js"></script>
 <dialog id="surprisePopup" class="surprise-popup">
     <div class="surprise-overlay-content">
@@ -145,6 +145,37 @@ const header = document.querySelector("header");
                 <source src="resources/Lord Huron - The Night We Met (Official Audio) - Lord Huron.mp3" type="audio/mpeg">
             </audio>
         </div>
+    </div>
+</dialog>
+
+<dialog id="thankYouPopup" class="surprise-popup">
+    <div class="surprise-overlay-content">
+
+        <img
+            src="resources/yessss.png"
+            alt="A special memory"
+            class="surprise-image"
+        >
+
+        <div class="surprise-card">
+            <p class="surprise-label">A LITTLE PROMISE</p>
+
+            <h2>✦ Really?! 🥰 ✦</h2>
+
+            <p class="surprise-message">
+                Thank you for being my date.
+                I shall await your coming.
+            </p>
+
+            <button
+                id="promiseButton"
+                class="surprise-yes"
+                type="button"
+            >
+                For you, I promise ❤️
+            </button>
+        </div>
+
     </div>
 </dialog>
 </body>

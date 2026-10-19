@@ -4,9 +4,10 @@
   box-sizing: border-box;
 }
 
+
 header {
     background-color: #593D2B;
-    padding: 0 5%;
+    padding: 0;
     box-shadow: 0 3px 10px rgba(50, 30, 15, 0.12);
 
     position: fixed;
@@ -22,6 +23,7 @@ header {
         box-shadow 0.35s ease;
 }
 
+
 header.scrolled {
     background-color: rgba(89, 61, 43, 0.72);
     backdrop-filter: blur(14px);
@@ -30,13 +32,13 @@ header.scrolled {
 }
 
 .navbar {
-    max-width: 1200px;
-    min-height: 50px;
-    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 24px;
+    width: 100%;
+    padding: 15px clamp(12px, 2vw, 30px);
+    box-sizing: border-box;
+    gap: 20px;
 }
 
 .logo {
@@ -45,15 +47,21 @@ header.scrolled {
     font-weight: bold;
     text-decoration: none;
     white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .nav-links {
     display: flex;
     align-items: center;
     gap: 30px;
-    list-style: none;
-    margin: 0;
+    margin-left: auto;
     padding: 0;
+    list-style: none;
+    flex-shrink: 0;
+}
+
+.nav-links li {
+    list-style: none;
 }
 
 .nav-links a {
@@ -68,27 +76,31 @@ header.scrolled {
     color: #E6B77A;
 }
 
-@media (max-width: 600px) {
-    header {
-        padding: 0 5%;
-    }
+.surprise-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
 
+@media (max-width: 600px) {
     .navbar {
-        min-height: 75px;
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 16px 0;
-        gap: 14px;
+        padding: 12px;
+        gap: 12px;
     }
 
     .logo {
-        font-size: 1.45rem;
+        font-size: 0;
     }
 
     .nav-links {
-        gap: 20px;
+        gap: 12px;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: flex-end;
+    }
+
+    .nav-links a {
+        font-size: 0.9rem;
     }
 }
 
@@ -263,7 +275,7 @@ header.scrolled {
 .about-hero {
     background-color: #FBE7B2;
     text-align: center;
-    padding: 80px 12%;
+    padding: 142px 8% 12px;
 }
 
 .about-hero h1 {
@@ -459,16 +471,25 @@ header.scrolled {
     transition: opacity 0.5s ease;
 }
 
-/* Front image is visible by default */
 .portrait-front {
     opacity: 1;
     z-index: 2;
 }
 
-/* Back image stays underneath */
 .portrait-back {
     opacity: 0;
     z-index: 1;
+}
+
+/* Flip effect for both team and owner cards */
+.team-card:hover .portrait-front,
+.owner-card:hover .portrait-front {
+    opacity: 0;
+}
+
+.team-card:hover .portrait-back,
+.owner-card:hover .portrait-back {
+    opacity: 1;
 }
 
 /* Hover fades the front image away */
