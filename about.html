@@ -92,13 +92,25 @@
                 <h2>Meet Our Team</h2>
                 <p>The people who help bring Rene's OnlyPans to life.</p>
             </div>
+            
             <div class="owner-section">
                 <div class="team-card owner-card">
-                    <img src="resources/Professional Barong Portrait in Modern Office.png" alt="Kai, bakery owner">
+                    <div class="portrait-flip">
+                        <img
+                            src="resources/Professional Barong Portrait in Modern Office.png"
+                            alt="Kai, bakery owner"
+                            class="portrait-front">
+
+                        <img
+                            src="resources/ddd.png"
+                            alt="Kai, alternate portrait"
+                            class="portrait-back">
+                    </div>
 
                     <h3>Kai</h3>
                     <p class="team-role">Owner & Founder</p>
                     <p>Bringing warmth and sweetness to every bite, one loaf at a time.</p>
+
                 </div>
             </div>
             <div class="team-grid">
@@ -225,7 +237,7 @@
     window.addEventListener("scroll", updateNavbar);
     updateNavbar();
 </script>
-/* <============== DON'T MIND THIS PART ===============> */
+/* ============== DON'T MIND THIS PART =============== */
 <script src="surprise.js"></script>
 <dialog id="surprisePopup" class="surprise-popup">
     <div class="surprise-overlay-content">
@@ -257,6 +269,38 @@
         </div>
     </div>
 </dialog>
+
+<dialog id="thankYouPopup" class="surprise-popup">
+    <div class="surprise-overlay-content">
+
+        <img
+            src="resources/yessss.png"
+            alt="A special memory"
+            class="surprise-image"
+        >
+
+        <div class="surprise-card">
+            <p class="surprise-label">A LITTLE PROMISE</p>
+
+            <h2>✦ Really?! 🥰 ✦</h2>
+
+            <p class="surprise-message">
+                Thank you for being my date.
+                I shall await your coming.
+            </p>
+
+            <button
+                id="promiseButton"
+                class="surprise-yes"
+                type="button"
+            >
+                For you, I promise ❤️
+            </button>
+        </div>
+
+    </div>
+</dialog>
+
 </body>
 </html>
 
